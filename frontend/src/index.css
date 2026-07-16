@@ -1,0 +1,276 @@
+:root {
+  --bg: #0e1620;
+  --surface: #141f2b;
+  --surface-raised: #1a2733;
+  --border: #263340;
+  --text-primary: #e7edf2;
+  --text-secondary: #8ca0b3;
+  --accent-potency: #e8965b;
+  --accent-qed: #4fc3b0;
+  --accent-signature: #c8e85a;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.brand-mark {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--accent-signature);
+  border: 1px solid var(--accent-signature);
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.metrics {
+  display: flex;
+  gap: 28px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.metric-label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 24px 32px 48px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.candidates-panel {
+  grid-column: 1 / -1;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 22px 24px;
+}
+
+.panel h2 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+
+.panel-sub {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin: 0 0 14px;
+}
+
+.candidates-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 16px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-generate {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  background: var(--accent-signature);
+  color: #142010;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-generate:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-generate:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.candidate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.candidate-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.candidate-structure {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #fff;
+  border-radius: 6px;
+  object-fit: contain;
+  display: block;
+}
+
+.candidate-bars {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 32px;
+  align-items: center;
+  gap: 6px;
+}
+
+.bar-label {
+  font-size: 10px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.bar-track {
+  height: 5px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+}
+
+.bar-value {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-align: right;
+}
+
+.candidate-footer {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-signature);
+}
+
+.eda-footnote {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+}
+
+.empty-state {
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.loading-screen {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  text-align: center;
+  padding: 0 20px;
+}
+
+.loading-screen.error {
+  color: var(--accent-potency);
+}
+
+.loading-pulse {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent-signature);
+  animation: pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0.7);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.hint {
+  font-size: 12px;
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+  .statusbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
