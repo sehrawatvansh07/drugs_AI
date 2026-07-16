@@ -1,5 +1,5 @@
 # drug_AI
-Author : Pratyaksh
+Author : Vansh
 
 # EGFR Inhibitor Discovery — Web App
 
